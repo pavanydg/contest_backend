@@ -1,7 +1,6 @@
 const express = require("express")
 const cors = require("cors")
-const dotenv = require("dotenv");
-const { fetchCodeForcesContests, fetchCodeChefContests, fetchLeetCodeContests } = require("./services/fetchContest");
+const { fetchCodeForcesContests, fetchCodeChefContests, fetchLeetCodeContests, fetchYouTubeSolutions } = require("./services/fetchContest");
 
 const app = express();
 
@@ -9,6 +8,13 @@ app.use(cors())
 app.use(express())
 
 const PORT = process.env.PORT || 3001
+
+app.get("/dummy", async(req, res) => {
+    console.log(await fetchYouTubeSolutions("PLcXpkI9A-RZLUfBSNp-YQBCOezZKbDSgB"))
+    res.json({
+        msg: "hi"
+    })
+})
 
 app.get('/api/contests', async (req, res) => {
     try {
