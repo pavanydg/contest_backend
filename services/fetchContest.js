@@ -188,7 +188,7 @@ function convertLeetCodeToApi(contest, videos) {
         name: contest.title,
         type: type,
         platform: 'Leetcode',
-        url: `https://leetcode.com/${contest.titleSlug}`,
+        url: `https://leetcode.com/contest/${contest.titleSlug}`,
         startTime: startTime.toISOString(),
         endTime: endTime.toISOString(),
         status,
