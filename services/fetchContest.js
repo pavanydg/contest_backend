@@ -35,11 +35,13 @@ export async function fetchYouTubeSolutions(playlistId) {
     }
 }
 
+// for leetcode
 function findSolutionLinkLeetCode(contestName, videos) {
     const match = videos.find(video => video.title.toLowerCase().includes(contestName.toLowerCase()));
     return match ? match.url : null;
 }
 
+// for codechef and codeforces
 function findSolutionLink(contestName, videos, status) {
     const numberMatch = contestName.match(/\d+/);
     if (!numberMatch || status == 'upcoming' || status == 'ongoing') return null; // Return null if no number is found
@@ -53,7 +55,7 @@ function findSolutionLink(contestName, videos, status) {
     return match ? match.url : null;
 }
 
-
+// for codeforces
 export async function fetchCodeForcesContests() {
     try {
         const response = await axios.get('https://codeforces.com/api/contest.list')
@@ -91,6 +93,7 @@ export async function fetchCodeForcesContests() {
     }
 }
 
+// for codechef
 export async function fetchCodeChefContests() {
     try {
         const response = await axios.get('https://www.codechef.com/api/list/contests/all?sort_by=START&sorting_order=asc&offset=0&mode=all')
@@ -132,6 +135,7 @@ function convertCodeChefToApi(contest, status, videos) {
     }
 }
 
+// for leetcode
 export async function fetchLeetCodeContests() {
     try {
         const query = {
